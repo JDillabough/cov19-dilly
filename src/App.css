@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f6fa;
 }
 
 .app__header {
@@ -9,4 +15,15 @@
   align-items: center;
   justify-content: space-between;
   margin: 10px;
+}
+
+.app__stats {
+  font-family: 'Sora', sans-serif;
+  justify-content: space-around;
+  display: flex;
+  filter: drop-shadow(.75em .75em)
+}
+
+.map {
+
 }
