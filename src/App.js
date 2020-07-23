@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { MenuItem, FormControl, Select, Card } from "@material-ui/core";
+import {
+  MenuItem,
+  FormControl,
+  Select,
+  Card,
+  CardContent
+} from "@material-ui/core";
 
 import InfoBox from "./components/InfoBox";
 import Map from "./components/Map";
@@ -7,8 +13,9 @@ import Map from "./components/Map";
 import "./App.css";
 
 function App() {
-  const [countries, setCountries] = useState([]);
-  const [country, setCountry] = useState("worldwide");
+  const [ countries, setCountries ] = useState([]);
+  const [ country, setCountry ] = useState("worldwide");
+  const [ countryInfo, setCountryInfo ] = useState({});
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -30,11 +37,25 @@ function App() {
   const onCountryChange = async e => {
     const countryCode = e.target.value;
     setCountry(countryCode);
+
+    const url =
+      countryCode === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+        await fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            setCountry(countryCode);
+            setCountryInfo(data);
+          });
   };
+  console.log(countryInfo)
+
 
   return (
     <div className="app">
-      <div className="app__fragmemt__left">
+      <div className="app__left">
         <div className="app__header">
           <h1>Cov-19 Tracker</h1>
           <FormControl className="app__dropdown">
@@ -58,6 +79,12 @@ function App() {
 
         <Map />
       </div>
+      <Card className="app__right">
+        <CardContent>
+          <h3>Live Cases by Country</h3>
+          <h3>Worldwide New Cases</h3>
+        </CardContent>
+      </Card>
     </div>
   );
 }

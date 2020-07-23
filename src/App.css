@@ -10,6 +10,11 @@ body {
   background-color: #f5f6fa;
 }
 
+.app {
+  display: flex;
+  justify-content: space-evenly; 
+}
+
 .app__header {
   display: flex;
   align-items: center;
@@ -19,11 +24,13 @@ body {
 
 .app__stats {
   font-family: 'Sora', sans-serif;
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
   filter: drop-shadow(.75em .75em)
 }
 
-.map {
-
+@media (max-width: 900px) {
+  .app  {
+    flex-direction: column;
+  }
 }
