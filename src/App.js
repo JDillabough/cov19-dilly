@@ -8,9 +8,10 @@ import {
 } from "@material-ui/core";
 
 import InfoBox from "./components/InfoBox";
+import Table from './components/Table';
 import Map from "./components/Map";
 
-import "./App.css";
+import './css/App.css'
 
 
 
@@ -18,6 +19,7 @@ function App() {
   const [ countries, setCountries ] = useState([]);
   const [ country, setCountry ] = useState("worldwide");
   const [ countryInfo, setCountryInfo ] = useState({});
+  const [ tableData, setTableData ] = useState([]);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -36,7 +38,7 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2
           }));
-
+          setTableData(data)
           setCountries(countries);
         });
     };

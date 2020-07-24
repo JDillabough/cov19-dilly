@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Inconsolata&family=Nunito&family=Nunito+Sans&family=Pacifico&family=Quicksand&family=Roboto+Mono:wght@500&family=Rubik&family=VT323&display=swap');
 
 * {
   margin: 0;
@@ -7,7 +7,12 @@
 }
 
 body {
-  background-color: #f5f6fa;
+  background-color: #f5b99d;
+  font-family: 'Roboto Mono', monospace;
+}
+
+select {
+
 }
 
 .app {
@@ -16,6 +21,9 @@ body {
 }
 
 .app__header {
+  font-family: 'Quicksand', sans-serif;
+  border-bottom: 3px dashed black;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +31,8 @@ body {
 }
 
 .app__stats {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Inconsolata', monospace;
+font-size: 20px;
   justify-content: space-between;
   display: flex;
   filter: drop-shadow(.75em .75em);
