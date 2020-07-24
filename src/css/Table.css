@@ -3,4 +3,21 @@
     /* padding: 20px; */
     overflow: scroll;
     max-height: 350px;
+    text-align: center;
+}
+
+.table tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table td {
+    padding: 0.5rem;
+}
+
+.table tr:nth-of-type(odd) {
+    color: rgb(3, 3, 3);
+    background-color: rgb(255, 194, 194);
+    font-weight: 900;
+
 }

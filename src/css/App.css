@@ -11,8 +11,8 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
-select {
-
+.app__right {
+text-align: center;
 }
 
 .app {
@@ -23,7 +23,6 @@ select {
 .app__header {
   font-family: 'Quicksand', sans-serif;
   border-bottom: 3px dashed black;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,10 +38,10 @@ font-size: 20px;
   text-align: center;
 }
 
-
 .map {
   padding-top: 50px;
 }
+
 
 @media (max-width: 900px) {
   .app  {
