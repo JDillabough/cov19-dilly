@@ -12,10 +12,20 @@ import Map from "./components/Map";
 
 import "./App.css";
 
+
+
 function App() {
   const [ countries, setCountries ] = useState([]);
   const [ country, setCountry ] = useState("worldwide");
   const [ countryInfo, setCountryInfo ] = useState({});
+
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then(response => response.json())
+    .then(data => {
+      setCountryInfo(data)
+    })
+  }, [])
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -50,14 +60,14 @@ function App() {
             setCountryInfo(data);
           });
   };
-  console.log(countryInfo)
+
 
 
   return (
     <div className="app">
       <div className="app__left">
         <div className="app__header">
-          <h1>Cov-19 Tracker</h1>
+          <h1>Cov-19 Today</h1>
           <FormControl className="app__dropdown">
             <Select
               variant="outlined"
@@ -72,9 +82,9 @@ function App() {
           </FormControl>
         </div>
         <div className="app__stats">
-          <InfoBox title="Coronavirus Cases" cases={123} total={1000} />
-          <InfoBox title="Recovered" cases={5000} total={10000} />
-          <InfoBox title="Deaths" cases={43223} total={453278} />
+          <InfoBox title="Coronavirus Cases Today" cases={countryInfo.todayCases} total={countryInfo.cases} />
+          <InfoBox title="Recovered Today" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
+          <InfoBox className='test' title="Deaths Today" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
         </div>
 
         <Map />
@@ -82,6 +92,7 @@ function App() {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
+          <Table countries={tableData} />
           <h3>Worldwide New Cases</h3>
         </CardContent>
       </Card>

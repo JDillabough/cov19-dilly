@@ -26,11 +26,22 @@ body {
   font-family: 'Sora', sans-serif;
   justify-content: space-between;
   display: flex;
-  filter: drop-shadow(.75em .75em)
+  filter: drop-shadow(.75em .75em);
+  text-align: center;
+}
+
+
+.map {
+  padding-top: 50px;
 }
 
 @media (max-width: 900px) {
   .app  {
+    margin: 50px;
     flex-direction: column;
   }
+}
+
+.test {
+  color: green;
 }
