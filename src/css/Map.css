@@ -1,0 +1,12 @@
+.map {
+    height: 500px;
+    background: white;
+    padding:1rem;
+    width: 100%;
+    margin-top: 1em;
+    filter: drop-shadow(1em 0.75em);
+}
+
+.map .leaflet-container {
+    height: 100%;
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Inconsolata&family=Nunito&family=Nunito+Sans&family=Pacifico&family=Quicksand&family=Roboto+Mono:wght@500&family=Rubik&family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Inconsolata&family=Nunito&family=Nunito+Sans&family=Pacifico&family=Quicksand&family=Roboto+Mono:wght@500&family=Rubik&family=VT323&display=swap");
 
 * {
   margin: 0;
@@ -7,21 +7,29 @@
 }
 
 body {
-  background-color: #f5b99d;
-  font-family: 'Roboto Mono', monospace;
+  background-color: #ffa2a2;
+  font-family: "Roboto Mono", monospace;
+}
+
+.app__left {
+  padding: 50px;
 }
 
 .app__right {
-text-align: center;
+  text-align: center;
+  margin: 50px;
+  filter: drop-shadow(1em 0.75em);
 }
 
 .app {
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 75vw;
 }
 
 .app__header {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   border-bottom: 3px dashed black;
   display: flex;
   align-items: center;
@@ -30,26 +38,25 @@ text-align: center;
 }
 
 .app__stats {
-  font-family: 'Inconsolata', monospace;
-font-size: 20px;
+  font-family: "Inconsolata", monospace;
+  font-size: 20px;
   justify-content: space-between;
   display: flex;
-  filter: drop-shadow(.75em .75em);
-  text-align: center;
+  filter: drop-shadow(0.75em 0.75em);
 }
 
 .map {
-  padding-top: 50px;
+  display: inline-block;
+  margin-top: 50px;
 }
 
-
 @media (max-width: 900px) {
-  .app  {
+  .app {
     margin: 50px;
     flex-direction: column;
   }
 }
 
-.test {
-  color: green;
+.country__card {
+
 }
