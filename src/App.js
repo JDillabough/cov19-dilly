@@ -6,34 +6,34 @@ import {
   Card,
   CardContent
 } from "@material-ui/core";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 
 import InfoBox from "./components/InfoBox";
-import Table from './components/Table';
+import Table from "./components/Table";
 import Map from "./components/Map";
-import LineGraph from './components/LineGraph';
-import { sortData } from "./util"; 
+import LineGraph from "./components/LineGraph";
+import { sortData } from "./util";
 
-import './css/App.css'
+import "./css/App.css";
 
 function App() {
-  const [ countries, setCountries ] = useState([]);
-  const [ country, setCountry ] = useState("worldwide");
-  const [ countryInfo, setCountryInfo ] = useState({});
-  const [ tableData, setTableData ] = useState([]);
-  const [ mapCenter, setMapCenter ] = useState({
-    lat: 51, 
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({
+    lat: 51,
     lng: 0
   });
-  const [ mapZoom, setMapZoom ] = useState(3);
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
-    .then(response => response.json())
-    .then(data => {
-      setCountryInfo(data)
-    })
-  }, [])
+      .then(response => response.json())
+      .then(data => {
+        setCountryInfo(data);
+      });
+  }, []);
 
   useEffect(() => {
     const getCountriesData = async () => {
@@ -42,7 +42,7 @@ function App() {
         .then(data => {
           const countries = data.map(country => ({
             name: country.country,
-            value: country.countryInfo.iso2,
+            value: country.countryInfo.iso2
           }));
 
           const sortedData = sortData(data);
@@ -63,21 +63,19 @@ function App() {
         ? "https://disease.sh/v3/covid-19/all"
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
-        await fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            setCountry(countryCode);
-            setCountryInfo(data);
-          });
+    await fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setCountry(countryCode);
+        setCountryInfo(data);
+      });
   };
-
-
 
   return (
     <div className="app">
       <div className="app__left">
         <div className="app__header">
-          <h1 className='title'>Cov-19 Today</h1>
+          <h1 className="title">Cov-19 Today</h1>
           <FormControl className="app__dropdown">
             <Select
               variant="outlined"
@@ -92,19 +90,30 @@ function App() {
           </FormControl>
         </div>
         <div className="app__stats">
-          <InfoBox title="Coronavirus Cases Today" cases={countryInfo.todayCases} total={countryInfo.cases} />
-          <InfoBox title="Recovered Today" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
-          <InfoBox className='test' title="Deaths Today" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
+            <InfoBox
+              title="Coronavirus Cases Today"
+              cases={countryInfo.todayCases}
+              total={countryInfo.cases}
+              className='testingg'
+            />
+            <InfoBox
+              title="Recovered Today"
+              cases={countryInfo.todayRecovered}
+              total={countryInfo.recovered}
+              className='testingg'
+            />
+            <InfoBox
+              title="Deaths Today"
+              cases={countryInfo.todayDeaths}
+              total={countryInfo.deaths}
+              className='testingg'
+            />
         </div>
 
-        <Map  
-        center={mapCenter}
-        zoom={mapZoom}
-        className='mappy'
-        />
+        <Map center={mapCenter} zoom={mapZoom} className="mappy" />
       </div>
       <Card className="app__right">
-        <CardContent className='country__card'>
+        <CardContent className="country__card">
           <h3>Live Cases by Country</h3>
           <Table countries={tableData} />
           <h3>Worldwide New Cases</h3>

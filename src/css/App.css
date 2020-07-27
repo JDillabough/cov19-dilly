@@ -11,15 +11,18 @@ body {
   font-family: "Roboto Mono", monospace;
 }
 
+
 .app__left {
   padding: 50px;
   margin: 0;
+  width: 100vw;
 }
 
 .app__right {
   text-align: center;
   margin: 50px;
   filter: drop-shadow(1em 0.75em);
+  min-width: 400px;
 }
 
 .app {
@@ -41,7 +44,7 @@ body {
 .app__stats {
   font-family: "Inconsolata", monospace;
   font-size: 20px;
-  justify-content: space-between;
+  justify-content: space-around;
   display: flex;
   filter: drop-shadow(0.75em 0.75em);
 }
@@ -58,6 +61,11 @@ body {
   }
 }
 
-.country__card {
 
+.shit {
+display: grid;
+grid-template-columns: 3fr/4;
+place-items: center;
+text-align: center;
+align-items: center;
 }
